@@ -1,2 +1,2 @@
-const serverURL = 'http://localhost:8081/memes';
+const serverURL = "https://api.xmeme.kushrike.me/memes";
 export default serverURL;
