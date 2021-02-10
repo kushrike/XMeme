@@ -2,12 +2,9 @@ import React, { useEffect, useState } from "react";
 import "../App.css";
 import Meme from "./Meme";
 import axios from "axios";
-// import memes from "./data";
 const Memes = ({ serverURL, parentState }) => {
     const [memeState, setMemeState] = useState([]);
     //fetch data from backend
-	console.log('Memes component rerendered');
-    //handle the re-render;
     useEffect(() => {
         axios
             .get(serverURL)
@@ -21,6 +18,7 @@ const Memes = ({ serverURL, parentState }) => {
                 console.log(err);
             });
     }, [parentState]);
+    //display all the fetched memes in individual 'Meme' Component
     return (
         <>
             {memeState.map((val, ind) => {

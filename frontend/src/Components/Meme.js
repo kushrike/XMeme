@@ -10,7 +10,7 @@ import {
 } from "reactstrap";
 import "../App.css";
 const Meme = ({name, caption, url}) => { 
-  // Got to add id here
+  //display individual meme as a separate Card
   return (
     <>
       <div className="cardComponents">
@@ -24,11 +24,11 @@ const Meme = ({name, caption, url}) => {
             alt="Card image cap"
           />
           <CardBody>
-            <CardTitle tag="h2">{name}</CardTitle>
+            <CardTitle tag="h2">{caption}</CardTitle>
             <CardSubtitle tag="h2" className="mb-2 text-muted">
-              {caption}
+              {name}
             </CardSubtitle>
-            <Button className="btn btn-success">Edit</Button>
+            {/* <Button className="btn btn-success">Edit</Button> */}
           </CardBody>
         </Card>
       </div>

@@ -4,11 +4,14 @@ import "../App.css";
 import axios from "axios";
 
 const Forms = ({ serverURL, toggleState }) => {
+
+    //state to manage Input Form data
     let [inputState, setInputState] = useState({
         name: "",
         caption: "",
         url: "",
     });
+    //state to display error message ont the page
     const [errMsg, setErrMsg] = useState("");
 
     const handleSubmit = (e) => {
@@ -22,6 +25,7 @@ const Forms = ({ serverURL, toggleState }) => {
             })
                 .then((data) => {
                     console.log(data.data);
+                    //re render Memes component
                     toggleState();
                 })
                 .catch((err) => {
@@ -29,8 +33,7 @@ const Forms = ({ serverURL, toggleState }) => {
                         setErrMsg(err.response.data.error);
                     }
                 });
-            //re render Memes component
-
+                //clear the Form
             setInputState({ name: "", caption: "", url: "" });
             setErrMsg("");
         } else {
