@@ -1,4 +1,4 @@
-import express, { Router, json } from "express";
+import express, { json } from "express";
 const app = express();
 import dbConnection from "./db.js";
 import memes from "./routes/memes.js";
