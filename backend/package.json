@@ -1,0 +1,18 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "Backend for Xmeme",
+    "main": "app.js",
+    "type": "module",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "mongoose": "^5.11.15"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "kkuusshhaallss",
+    "license": "ISC"
+}
