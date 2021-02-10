@@ -1,3 +1,3 @@
 cd backend
 npm install
-npm start
+pm2 start app.js

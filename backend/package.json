@@ -7,12 +7,12 @@
     "dependencies": {
         "cors": "^2.8.5",
         "express": "^4.17.1",
-        "mongoose": "^5.11.15"
+        "mongoose": "^5.11.15",
+        "pm2": "^4.5.4"
     },
     "scripts": {
-        "start": "node app.js"
+        "start": "node app.js &"
     },
-    "devDependencies": {},
     "author": "kkuusshhaallss",
     "license": "ISC"
 }
