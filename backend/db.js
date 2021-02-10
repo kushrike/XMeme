@@ -7,6 +7,7 @@ const dbConnection = () => {
     mongoose.connect(mongoDB, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useFindAndModify: false,
     });
 
     //Get the default connection

@@ -80,8 +80,10 @@ export const fetchMemes = (req, res) => {
 //Controls sending back one meme by its unique id
 export const findMeme = (req, res) => {
     try {
+        //finding meme by passed <id>
         Meme.find({ id: req.params.memeID })
             .then((doc) => {
+                //doc is an array of all matching meme IDs
                 if (doc.length === 0)
                     res.status("404").send("Meme ID not found");
                 else res.send(doc[0]);
@@ -92,5 +94,30 @@ export const findMeme = (req, res) => {
             });
     } catch (err) {
         res.status(500).send({ error: err });
+    }
+};
+
+//Controls the editing of existing memes
+export const editMeme = (req, res) => {
+    try {
+        if (!req.body.caption && !req.body.url) {
+            res.status(400).send(); //Bad data format in request
+        } else {
+            //Building the data object to update the matching meme
+            const data = {};
+            if (req.body.caption) data["caption"] = req.body.caption;
+            if (req.body.url) data["url"] = req.body.url;
+            Meme.findOneAndUpdate(
+                { id: req.params.memeID },
+                data,
+                (err, doc) => {
+                    if (!doc) {
+                        res.status(404).send();
+                    } else res.status(200).send();
+                }
+            );
+        }
+    } catch (err) {
+        res.status(500).send();
     }
 };
