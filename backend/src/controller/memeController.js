@@ -48,7 +48,7 @@ export const createMeme = async (req, res) => {
                     });
             }
         } else {
-            res.status(400).send({ error: "ill formatted request" });
+            res.status(422).send({ error: "Unprocessable Entity" });
         }
     } catch (err) {
         res.status(500).send({ error: err });
