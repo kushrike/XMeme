@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Form from "./Components/Form";
 import Memes from "./Components/Memes";
-import serverURL from "./serverLocation";
+import {serverURL, swaggerURL} from "./serverLocation";
 
 function App() {
     //using the 'state' variable as the parentState for its children, Form Component and Memes Component
@@ -13,7 +13,7 @@ function App() {
     return (
         <>
             <header className="App-header">
-                <Form serverURL={serverURL} toggleState={toggleState} />
+                <Form serverURL={serverURL} swaggerURL={swaggerURL} toggleState={toggleState} />
                 <Memes serverURL={serverURL} parentState={state} />
             </header>
         </>

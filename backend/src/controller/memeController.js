@@ -29,7 +29,7 @@ export const createMeme = async (req, res) => {
             } else {
                 //timestamping the id attribute
                 data["id"] = Date.now().toString();
-
+                data["_id"] = data["id"];
                 //save the new Meme to database
                 const newMeme = new Meme(data);
                 newMeme
@@ -59,7 +59,7 @@ export const createMeme = async (req, res) => {
 export const fetchMemes = (req, res) => {
     try {
         Meme.find({})
-            .sort({ id: -1 })
+            .sort({ _id: -1 })
             .limit(100)
             .exec()
             .then((docs) => {
@@ -83,7 +83,7 @@ export const fetchMemes = (req, res) => {
 export const findMeme = (req, res) => {
     try {
         //finding meme by passed <id>
-        Meme.find({ id: req.params.memeID })
+        Meme.find({ _id: req.params.memeID })
             .then((docs) => {
                 //docs is an array of all matching meme IDs
                 if (docs.length === 0)
@@ -121,7 +121,7 @@ export const editMeme = (req, res) => {
             if (req.body.caption) data["caption"] = req.body.caption;
             if (req.body.url) data["url"] = req.body.url;
             Meme.findOneAndUpdate(
-                { id: req.params.memeID },
+                { _id: req.params.memeID },
                 data,
                 (err, doc) => {
                     if (!doc) {
