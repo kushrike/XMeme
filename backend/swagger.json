@@ -1,0 +1,202 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Submission for CWOD Stage 2b",
+    "version": "1.0.0",
+    "title": "X Meme API",
+    "contact": {
+      "email": "kushrike@gmail.com"
+    }
+  },
+  "host": "api.xmeme.kushrike.me",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/memes/": {
+      "get": {
+        "tags": [
+          "Memes"
+        ],
+        "description": "Get latest 100 Memes",
+        "operationId": "memeController.fetchMemes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Fetched all memes",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/models.Meme"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Memes"
+        ],
+        "description": "Create a new Meme",
+        "operationId": "memeController.createMeme",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Create a new Meme",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/models.memePost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Meme created successfully",
+            "schema": {
+              "$ref": "#/definitions/models.Response"
+            }
+          },
+          "409": {
+            "description": "Duplicate Post"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/memes/{memeID}": {
+      "get": {
+        "tags": [
+          "Memes"
+        ],
+        "description": "Get Meme by ID",
+        "operationId": "memeController.findMeme",
+        "parameters": [
+          {
+            "name": "memeID",
+            "in": "path",
+            "description": "ID of the meme you want to get",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetched the Meme successfully",
+            "schema": {
+              "$ref": "#/definitions/models.Meme"
+            }
+          },
+          "404": {
+            "description": "Meme ID not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Memes"
+        ],
+        "description": "Edit a meme by ID",
+        "operationId": "memeController.editMeme",
+        "parameters": [
+          {
+            "name": "memeID",
+            "in": "path",
+            "description": "ID of the meme you want to edit",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Edit Request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/models.memeEdit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Edited the Meme successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Meme ID not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "models.Meme": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        }
+      },
+      "title": "Meme"
+    },
+    "models.Response": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "title": "Response"
+    },
+    "models.memePost": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        }
+      },
+      "title": "PostMeme"
+    },
+    "models.memeEdit": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        }
+      },
+      "title": "EditMeme"
+    }
+  }
+}
