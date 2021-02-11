@@ -38,9 +38,7 @@ export const createMeme = async (req, res) => {
                         console.log(doc);
 
                         //sending back id as response
-                        const resObject = {};
-                        resObject["id"] = data["id"];
-                        res.json(resObject);
+                        res.send({ id: doc["id"] });
                     })
                     .catch((err) => {
                         console.log(err);
@@ -66,6 +64,10 @@ export const fetchMemes = (req, res) => {
             .exec()
             .then((docs) => {
                 //send the docs as response
+                docs = docs.map((doc) => {
+                    const { id, name, url, caption } = doc;
+                    return { id: id, name: name, url: url, caption: caption };
+                });
                 res.send(docs);
             })
             .catch((err) => {
@@ -82,11 +84,22 @@ export const findMeme = (req, res) => {
     try {
         //finding meme by passed <id>
         Meme.find({ id: req.params.memeID })
-            .then((doc) => {
-                //doc is an array of all matching meme IDs
-                if (doc.length === 0)
+            .then((docs) => {
+                //docs is an array of all matching meme IDs
+                if (docs.length === 0)
                     res.status("404").send("Meme ID not found");
-                else res.send(doc[0]);
+                else {
+                    docs = docs.map((doc) => {
+                        const { id, name, url, caption } = doc;
+                        return {
+                            id: id,
+                            name: name,
+                            url: url,
+                            caption: caption,
+                        };
+                    });
+                    res.send(docs[0]);
+                }
             })
             .catch((err) => {
                 console.log(err);
