@@ -11,12 +11,12 @@ function App() {
         setState(!state);
     };
     return (
-        <div className="App">
+        <>
             <header className="App-header">
                 <Form serverURL={serverURL} toggleState={toggleState} />
                 <Memes serverURL={serverURL} parentState={state} />
             </header>
-        </div>
+        </>
     );
 }
 
