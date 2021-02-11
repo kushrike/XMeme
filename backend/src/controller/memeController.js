@@ -28,7 +28,7 @@ export const createMeme = async (req, res) => {
                 res.status(409).send({ error: "Duplicate Post" });
             } else {
                 //timestamping the id attribute
-                data["id"] = Date.now().toString();
+                data["id"] = Date.now().toString().substring(1);
                 data["_id"] = data["id"];
                 //save the new Meme to database
                 const newMeme = new Meme(data);
