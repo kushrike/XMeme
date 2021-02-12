@@ -83,7 +83,7 @@ export const fetchMemes = (req, res) => {
 export const findMeme = (req, res) => {
     try {
         //finding meme by passed <id>
-        Meme.find({ _id: req.params.memeID })
+        Meme.find({ id: req.params.memeID })
             .then((docs) => {
                 //docs is an array of all matching meme IDs
                 if (docs.length === 0)
@@ -121,7 +121,7 @@ export const editMeme = (req, res) => {
             if (req.body.caption) data["caption"] = req.body.caption;
             if (req.body.url) data["url"] = req.body.url;
             Meme.findOneAndUpdate(
-                { _id: req.params.memeID },
+                { id: req.params.memeID },
                 data,
                 (err, doc) => {
                     if (!doc) {
