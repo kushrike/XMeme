@@ -4,15 +4,16 @@ import "../App.css";
 import axios from "axios";
 
 const Forms = ({ serverURL, swaggerURL, toggleState }) => {
-    //state to manage Input Form data
+    // state to manage Input Form data
     let [inputState, setInputState] = useState({
         name: "",
         caption: "",
         url: "",
     });
-    //state to display error message ont the page
+    // state to display error message on the page
     const [errMsg, setErrMsg] = useState("");
 
+    // Form helper functions
     const handleSubmit = (e) => {
         e.preventDefault();
         if (inputState.name && inputState.caption && inputState.url) {
@@ -56,7 +57,7 @@ const Forms = ({ serverURL, swaggerURL, toggleState }) => {
                 </h1>
                 <Button
                     className="btn pl-5 pr-5"
-                    onClick={function (e) {
+                    onClick={()=> {
                         window.open(swaggerURL);
                     }}
                 >
@@ -64,7 +65,6 @@ const Forms = ({ serverURL, swaggerURL, toggleState }) => {
                 </Button>
             </div>
             <div className="form__container">
-                <FormGroup className="text-center"></FormGroup>
                 <Form onSubmit={handleSubmit}>
                     <FormGroup row>
                         <Label xs={4}>Name*</Label>

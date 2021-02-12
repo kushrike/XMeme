@@ -22,7 +22,7 @@ const Memes = ({ serverURL, parentState }) => {
     return (
         <>
             {memeState.map((val, ind) => {
-                return <Meme key={ind} {...val} />;
+                return <Meme key={ind} serverURL={serverURL} {...val} />;
             })}
         </>
     );
