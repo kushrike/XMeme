@@ -1,12 +1,12 @@
 # Xmeme Application 
 ## By Kushal (kkuusshhaallss)
 
-The XMeme application is a full stack Meme Stream Application built using the ```MERN``` stack.
-A user may enter his/her name, a suitable caption along with an image URL. 
-The entered information will be posted as a meme on the Page.
-The Page displayes a list of latest 100 memes posted, in reverse chronological order. 
-The user may also edit the Caption and Image URLs of all the other memes posted on the Page 
-The publicly deployed frontend can be found at : https://xmeme.kushrike.me/ and the backend at https://api.xmeme.kushrike.me/
+The XMeme application is a full stack Meme Stream Application built using the ```MERN``` stack. <br>
+A user may enter his/her name, a suitable caption along with an image URL. <br>
+The entered information will be posted as a meme on the Page.<br>
+The Page displayes a list of latest 100 memes posted, in reverse chronological order. <br>
+The user may also edit the Caption and Image URLs of all the other memes posted on the Page <br> 
+The publicly deployed frontend can be found at : https://xmeme.kushrike.me/ and the backend at https://api.xmeme.kushrike.me/ <br>
 
 The source files are divided into frontend and backend directories
 <details open>
@@ -75,10 +75,10 @@ ____________________
 </details>
 
 
-I have tried my best to keep the Code modularised and oriented.
+I have tried my best to keep the Code modularised and oriented. <br>
 
-The backend has been build keeping in mind the MVC pattern.
-The API information and documentation can be found at https://swagger.xmeme.kushrike.me/swagger-ui/
+The backend has been build keeping in mind the MVC pattern. <br>
+The API information and documentation can be found at https://swagger.xmeme.kushrike.me/swagger-ui/ <br>
 
 #### Usage (For non-Ubuntu based systems)
 ##### Dependencies :
@@ -100,6 +100,6 @@ sudo ./install.sh
 chmod +x server_run.sh
 ./server_run.sh
 ```
-The backend server runs on http://localhost:8081
-The swagger documentation is available at http://localhost:8080/swagger-ui
-The frontend runs at http://localhost:3000
+The backend server runs on http://localhost:8081 <br>
+The swagger documentation is available at http://localhost:8080/swagger-ui <br>
+The frontend runs at http://localhost:3000 <br>
