@@ -1,15 +1,28 @@
-FROM node:14
-
+FROM ubuntu:18.04
 # Create app directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY ./backend/package*.json ./
 
+RUN apt-get update
+RUN apt-get upgrade -y
+
+# Install system dependencies
+RUN apt-get install -y curl
+RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash -
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+RUN apt-get install -y mongodb
+
+EXPOSE 27017
+RUN systemctl start mongodb.service
+
+# Install app dependencies
 RUN npm install
 
 COPY ./backend/ ./
 
 EXPOSE 8081
-CMD ["node","app.js"]
+EXPOSE 8080
+CMD ["node","--experimental-json-modules", "app.js"]
