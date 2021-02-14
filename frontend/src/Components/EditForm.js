@@ -60,7 +60,7 @@ const EditForm = ({
         }
     };
     return (
-        <div className={`form__container mx-auto ${edit ? "" : "d-none"}`}>
+        <div className={`form__container w-100 mx-auto ${edit ? "" : "d-none"}`}>
             <Form onSubmit={handleSubmit}>
                 <FormGroup row>
                     <Input
