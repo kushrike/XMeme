@@ -6,7 +6,7 @@ A user may enter his/her name, a suitable caption along with an image URL.
 The entered information will be posted as a meme on the Page.  
 The Page displayes a list of latest 100 memes posted, in reverse chronological order.  
 The user may also edit the Caption and Image URLs of all the other memes posted on the Page   
-The publicly deployed frontend can be found at : https://xmeme.kushrike.me/ and the backend at https://api.xmeme.kushrike.me/. The Video demonstration is available at https://youtu.be/PHtka9uhlf4  
+The publicly deployed frontend can be found at : https://xmeme.kushrike.me/ and the backend at https://api.xmeme.kushrike.me/. The aforementioned links are not currently active. The Video demonstration is available at https://youtu.be/PHtka9uhlf4  
 
 The source files are divided into frontend and backend directories
 <details open>
